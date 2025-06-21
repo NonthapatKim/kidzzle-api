@@ -1,0 +1,30 @@
+services:
+  kidzzle:
+    container_name: kidzzle-api
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - SECRET_KEY=${SECRET_KEY}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
+      - LINE_CLIENT_ID=${LINE_CLIENT_ID}
+      - TZ=Asia/Bangkok
+    networks:
+      - my_network
+    volumes:
+      - .:/app
+      - ./serviceAccountKey.json:/app/serviceAccountKey.json
+
+networks:
+  my_network:
+    external: true

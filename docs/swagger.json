@@ -1,0 +1,2040 @@
+{
+    "schemes": [
+        "http"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the API documentation for the kidzzle project.",
+        "title": "kidzzle API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api/v1",
+    "paths": {
+        "/assessments/result": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a new assessment result for a given kid and assessment question",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Assessment"
+                ],
+                "summary": "Create a new assessment result",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Assessment Result Request",
+                        "name": "assessment",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.CreateAssessmentResultRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Assessment result created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.CreateAssessmentResultResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/assessments/{assessmentType}/age-range/": {
+            "get": {
+                "description": "Get the age range for a given assessment type",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Assessment"
+                ],
+                "summary": "Get assessment age range",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Assessment Type ID",
+                        "name": "assessmentType",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Age range retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetAssessmentAgeRangeResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/assessments/{assessmentType}/question/": {
+            "get": {
+                "description": "Get assessment question by assessment type",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Assessment"
+                ],
+                "summary": "Get assessment question",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Assessment Type",
+                        "name": "assessmentType",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Assessment question retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetAssessmentQuestionResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/assessments/{assessmentType}/training": {
+            "get": {
+                "description": "Get training methods for a given assessment type",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Assessment"
+                ],
+                "summary": "Get assessment training methods",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Assessment Type ID",
+                        "name": "assessmentType",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Training methods retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetAssessmentTrainingMethodsResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/assessments/{kidId}/{ageRageId}/{assessmentTypeId}/result": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get assessment result data for a given kid, age range, and assessment type",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Assessment"
+                ],
+                "summary": "Get assessment result data by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Kid ID",
+                        "name": "kidId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Age Range ID",
+                        "name": "ageRageId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Assessment Type ID",
+                        "name": "assessmentTypeId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Assessment result data retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetAssessmentResultDataByIdResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/assessments/{kidId}/{assessmentQuestionId}/result": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get an assessment result for a given kid and assessment question",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Assessment"
+                ],
+                "summary": "Get an assessment result by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Kid ID",
+                        "name": "kidId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Assessment Question ID",
+                        "name": "assessmentQuestionId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Assessment result retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetAssessmentResultByIdResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/kids/": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Retrieve kid data using the provided access token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Kid"
+                ],
+                "summary": "Get kid data by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Pregnant ID",
+                        "name": "PregnantId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kid data retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetKidDataResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/kids/create": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a new kid data with the provided information",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Kid"
+                ],
+                "summary": "Create a new kid data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Kid Data Request",
+                        "name": "kidData",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.CreateKidDataRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kid data created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.CreateKidDataResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/kids/{kidId}": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update the data of a kid by their ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Kid"
+                ],
+                "summary": "Update kid data by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Kid ID",
+                        "name": "kidId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Kid Data Update Request",
+                        "name": "kidData",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.UpdateKidDataByIdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kid data updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UpdateKidDataByIdResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Delete kid data by given kid ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Kid"
+                ],
+                "summary": "Delete kid data by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Kid ID",
+                        "name": "kidId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kid data deleted successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.DeleteKidDataByIdResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/mother-pregnant/{pregnantId}": {
+            "delete": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Delete a mother pregnant record by its ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MotherPregnant"
+                ],
+                "summary": "Delete a mother pregnant record by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Pregnant ID",
+                        "name": "pregnantId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mother pregnant record deleted successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.DeleteMotherPregnantByIdResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/mother-pregnants/": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get mother pregnant information by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MotherPregnant"
+                ],
+                "summary": "Get mother pregnant by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Mother ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mother pregnant information retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetMotherPregnantByIdResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/mother-pregnants/create": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Create a new mother pregnant record with the given details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MotherPregnant"
+                ],
+                "summary": "Create a new mother pregnant record",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "description": "Mother Pregnant Request",
+                        "name": "motherPregnant",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.CreateMotherPregnantRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mother pregnant record created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.CreateMotherPregnantResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/mother-pregnants/{pregnantId}": {
+            "put": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Update the information of a mother pregnant by the given ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "MotherPregnant"
+                ],
+                "summary": "Update mother pregnant information by ID",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Access Token",
+                        "name": "accessToken",
+                        "in": "header",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Pregnant ID",
+                        "name": "pregnantId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Mother Pregnant Update Request",
+                        "name": "motherPregnant",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.UpdateMotherPregnantByIdRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Mother pregnant information updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UpdateMotherPregnantByIdResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/promotions/body-part": {
+            "get": {
+                "description": "Retrieve the promotion body part details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Promotion"
+                ],
+                "summary": "Get promotion body part",
+                "responses": {
+                    "200": {
+                        "description": "Promotion body part retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetPromotionBodyPartResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/promotions/color": {
+            "get": {
+                "description": "Retrieve the promotion color",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Promotion"
+                ],
+                "summary": "Get promotion color",
+                "responses": {
+                    "200": {
+                        "description": "Promotion color retrieved successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.GetPromotionColorResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/authenticate": {
+            "get": {
+                "description": "Authenticates the user based on the provided user token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Authenticate user from token",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "Bearer \u003ctoken\u003e",
+                        "description": "Access token",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserAuthenticateResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample400"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login/social": {
+            "post": {
+                "description": "Authenticates a user with provided credentials by Social Login (Third Party)",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "User login By Social Login (Third Party)",
+                "parameters": [
+                    {
+                        "description": "User login details",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserLoginBySocialRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserLoginBySocialResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample400"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/login": {
+            "post": {
+                "description": "Authenticate user with email and password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "User login",
+                "parameters": [
+                    {
+                        "description": "User Login Request",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserLoginRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User logged in successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserLoginResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/register": {
+            "post": {
+                "description": "Register a new user with email and password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register a new user",
+                "parameters": [
+                    {
+                        "description": "User Register Request",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserRegisterRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserRegisterResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ValidationError"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/request-reset-password": {
+            "post": {
+                "description": "Sends a password reset request to the specified email",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Request password reset",
+                "parameters": [
+                    {
+                        "description": "Email for password reset",
+                        "name": "userRequestResetPwd",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserRequestResetPasswordRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserRequestResetPasswordResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/reset-password": {
+            "put": {
+                "description": "Reset the password for the user using a reset password token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Reset user password",
+                "parameters": [
+                    {
+                        "description": "User reset password request",
+                        "name": "userResetPwd",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserResetPasswordRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/domain.UserResetPasswordResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample401"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/domain.ErrorResponseExample500"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "domain.CreateAssessmentResultRequest": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "assessment_question_id": {
+                    "type": "string"
+                },
+                "is_passed": {
+                    "type": "boolean"
+                },
+                "kid_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.CreateAssessmentResultResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.CreateKidDataRequest": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "kid_birth_weight": {
+                    "type": "string"
+                },
+                "kid_birthday": {
+                    "type": "string"
+                },
+                "kid_blood_type": {
+                    "type": "string"
+                },
+                "kid_body_length": {
+                    "type": "string"
+                },
+                "kid_congenital_disease": {
+                    "type": "string"
+                },
+                "kid_gender": {
+                    "type": "string"
+                },
+                "kid_gestational_age": {
+                    "type": "string"
+                },
+                "kid_name": {
+                    "type": "string"
+                },
+                "kid_oxygen": {
+                    "type": "string"
+                },
+                "pregnant_id": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.CreateKidDataResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.CreateMotherPregnantRequest": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "mother_birthday": {
+                    "type": "string"
+                },
+                "mother_name": {
+                    "type": "string"
+                },
+                "pregnant_complications": {
+                    "type": "string"
+                },
+                "pregnant_congenital_disease": {
+                    "type": "string"
+                },
+                "pregnant_drug_history": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.CreateMotherPregnantResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.DeleteKidDataByIdResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.DeleteMotherPregnantByIdResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.ErrorResponseExample400": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 400
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Bad Request"
+                }
+            }
+        },
+        "domain.ErrorResponseExample401": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 401
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Unauthorized"
+                }
+            }
+        },
+        "domain.ErrorResponseExample500": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 500
+                },
+                "message": {
+                    "type": "string",
+                    "example": "Internal Server Error"
+                }
+            }
+        },
+        "domain.GetAssessmentAgeRangeResponse": {
+            "type": "object",
+            "properties": {
+                "age_range": {
+                    "type": "string",
+                    "example": "0-1"
+                },
+                "age_range_id": {
+                    "type": "string",
+                    "example": "AGER_1"
+                },
+                "assessment_type_id": {
+                    "type": "string",
+                    "example": "ASSMTT_1"
+                },
+                "max_months": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "min_months": {
+                    "type": "string",
+                    "example": "0"
+                }
+            }
+        },
+        "domain.GetAssessmentQuestionResponse": {
+            "type": "object",
+            "properties": {
+                "age_range_id": {
+                    "type": "string",
+                    "example": "AGER_4"
+                },
+                "age_range_name": {
+                    "type": "string",
+                    "example": "3-4"
+                },
+                "assessment_method": {
+                    "type": "string",
+                    "example": "\u003cp\u003e1. จัดให้เด็กอยู่ในท่านอนคว่ำบนพื้นราบ\u0026nbsp;\u003c/p\u003e\u003cp\u003e2. เขย่ากรุ๋งกริ๋งด้านหน้าเด็กเพื่อให้เด็กสนใจ แล้วเคลื่อนขึ้นด้านบน กระตุ้นให้เด็กมองตาม\u003c/p\u003e"
+                },
+                "assessment_no": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "assessment_question_id": {
+                    "type": "string",
+                    "example": "088e7d6b-faa8-11ef-870e-0242ac120002"
+                },
+                "assessment_required_tool": {
+                    "type": "string",
+                    "example": "กรุ๋งกริ๋ง"
+                },
+                "assessment_type_id": {
+                    "type": "string",
+                    "example": "ASSMTT_1"
+                },
+                "assessment_type_name": {
+                    "type": "string",
+                    "example": "DAIM"
+                },
+                "dev_type_id": {
+                    "type": "string",
+                    "example": "DEVT_1"
+                },
+                "development_type": {
+                    "type": "string",
+                    "example": "GM"
+                },
+                "pass_criteria": {
+                    "type": "string",
+                    "example": "เด็กยกศีรษะและอกโดยใช้แขนยันกับพื้นพยุงตัวไว้อย่างน้อย 5 วินาที"
+                },
+                "question_text": {
+                    "type": "string",
+                    "example": "ท่านอนคว่ำยกศีรษะและอกพ้นพื้น (GM)"
+                }
+            }
+        },
+        "domain.GetAssessmentResultByIdResponse": {
+            "type": "object",
+            "properties": {
+                "assessment_question_id": {
+                    "type": "string",
+                    "example": "3afe2697-2b02-46d4-a9c3-efd0bdd9e014"
+                },
+                "assessment_result_id": {
+                    "type": "string",
+                    "example": "8457529e-01fb-41d0-82b1-9618be667862"
+                },
+                "created_at": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                },
+                "is_passed": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "kid_id": {
+                    "type": "string",
+                    "example": "7d7bc87f-0faf-43f9-9af9-1a09166db993"
+                }
+            }
+        },
+        "domain.GetAssessmentResultDataByIdResponse": {
+            "type": "object",
+            "properties": {
+                "age_range_id": {
+                    "type": "string",
+                    "example": "AGER_1"
+                },
+                "assessment_question_id": {
+                    "type": "string",
+                    "example": "3afe2697-2b02-46d4-a9c3-efd0bdd9e014"
+                },
+                "assessment_result_id": {
+                    "type": "string",
+                    "example": "7d7bc87f-0faf-43f9-9af9-1a09166db993"
+                },
+                "assessment_type_id": {
+                    "type": "string",
+                    "example": "ASSMTT_1"
+                },
+                "created_at": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                },
+                "is_passed": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "kid_id": {
+                    "type": "string",
+                    "example": "8457529e-01fb-41d0-82b1-9618be667862"
+                }
+            }
+        },
+        "domain.GetAssessmentTrainingMethodsResponse": {
+            "type": "object",
+            "properties": {
+                "assessment_no": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "assessment_question_id": {
+                    "type": "string",
+                    "example": "088e7d6b-faa8-11ef-870e-0242ac120002"
+                },
+                "assessment_type_id": {
+                    "type": "string",
+                    "example": "ASSMTT_1"
+                },
+                "training_methods_id": {
+                    "type": "string",
+                    "example": "088e7d6b-faa8-11ef-870e-0242ac120002"
+                },
+                "training_required_tools": {
+                    "type": "string",
+                    "example": "Training Required Tools"
+                },
+                "training_text": {
+                    "type": "string",
+                    "example": "Training Text"
+                }
+            }
+        },
+        "domain.GetKidDataResponse": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                },
+                "kid_birth_weight": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "kid_birthday": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                },
+                "kid_blood_type": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "kid_body_length": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "kid_congenital_disease": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "kid_gender": {
+                    "type": "string",
+                    "example": "Male"
+                },
+                "kid_gestational_age": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "kid_id": {
+                    "type": "string",
+                    "example": "088e7d6b-faa8-11ef-870e-0242ac120002"
+                },
+                "kid_name": {
+                    "type": "string",
+                    "example": "Waruntorn Paonil"
+                },
+                "kid_oxygen": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "mother_name": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "pregnant_id": {
+                    "type": "string",
+                    "example": "088e7d6b-faa8-11ef-870e-0242ac120002"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                }
+            }
+        },
+        "domain.GetMotherPregnantByIdResponse": {
+            "type": "object",
+            "properties": {
+                "created_at": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                },
+                "mother_birthday": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                },
+                "mother_name": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "pregnant_complications": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "pregnant_congenital_disease": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "pregnant_drug_history": {
+                    "type": "string",
+                    "example": "TEST"
+                },
+                "pregnant_id": {
+                    "type": "string",
+                    "example": "088e7d6b-faa8-11ef-870e-0242ac120002"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "example": "2025-03-09T00:00:00Z"
+                }
+            }
+        },
+        "domain.GetPromotionBodyPartResponse": {
+            "type": "object",
+            "properties": {
+                "body_id": {
+                    "type": "string",
+                    "example": "bd5f5f6f-fd05-11ef-870e-0242ac120002"
+                },
+                "body_image_url": {
+                    "type": "string",
+                    "example": "url_link"
+                },
+                "body_name": {
+                    "type": "string",
+                    "example": "สีเขียว (Green)"
+                },
+                "body_sound_file_url": {
+                    "type": "string",
+                    "example": "url_link"
+                }
+            }
+        },
+        "domain.GetPromotionColorResponse": {
+            "type": "object",
+            "properties": {
+                "color_id": {
+                    "type": "string",
+                    "example": "bd5f5f6f-fd05-11ef-870e-0242ac120002"
+                },
+                "color_image_url": {
+                    "type": "string",
+                    "example": "url_link"
+                },
+                "color_name": {
+                    "type": "string",
+                    "example": "สีน้ำตาล (Brown)"
+                },
+                "color_shape": {
+                    "type": "string",
+                    "example": "สี่เหลี่ยมจัตุรัส (Square)"
+                },
+                "color_sound_file_url": {
+                    "type": "string",
+                    "example": "url_link"
+                }
+            }
+        },
+        "domain.UpdateKidDataByIdRequest": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "kidId": {
+                    "type": "string"
+                },
+                "kid_birth_weight": {
+                    "type": "string"
+                },
+                "kid_birthday": {
+                    "type": "string"
+                },
+                "kid_blood_type": {
+                    "type": "string"
+                },
+                "kid_body_length": {
+                    "type": "string"
+                },
+                "kid_congenital_disease": {
+                    "type": "string"
+                },
+                "kid_gender": {
+                    "type": "string"
+                },
+                "kid_gestational_age": {
+                    "type": "string"
+                },
+                "kid_name": {
+                    "type": "string"
+                },
+                "kid_oxygen": {
+                    "type": "string"
+                },
+                "pregnant_id": {
+                    "type": "string"
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.UpdateKidDataByIdResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.UpdateMotherPregnantByIdRequest": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                },
+                "mother_birthday": {
+                    "type": "string"
+                },
+                "mother_name": {
+                    "type": "string"
+                },
+                "pregnantId": {
+                    "type": "string"
+                },
+                "pregnant_complications": {
+                    "type": "string"
+                },
+                "pregnant_congenital_disease": {
+                    "type": "string"
+                },
+                "pregnant_drug_history": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.UpdateMotherPregnantByIdResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.UserAuthenticateResponse": {
+            "type": "object",
+            "properties": {
+                "user_id": {
+                    "type": "string",
+                    "example": "302ba3d3-7c92-4777-a914-2aa7dee55e1e"
+                }
+            }
+        },
+        "domain.UserLoginBySocialRequest": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "method": {
+                    "type": "string",
+                    "example": "google"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.UserLoginBySocialResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiI..."
+                },
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "successfully login"
+                }
+            }
+        },
+        "domain.UserLoginRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 8
+                }
+            }
+        },
+        "domain.UserLoginResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiI..."
+                },
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "successfully login"
+                }
+            }
+        },
+        "domain.UserRegisterRequest": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "minLength": 8
+                },
+                "userId": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.UserRegisterResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "success"
+                }
+            }
+        },
+        "domain.UserRequestResetPasswordRequest": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.UserRequestResetPasswordResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.UserResetPasswordRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "token"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "token": {
+                    "type": "string"
+                }
+            }
+        },
+        "domain.UserResetPasswordResponse": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "message": {
+                    "type": "string",
+                    "example": "successfully reset password"
+                }
+            }
+        },
+        "domain.ValidationError": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "$ref": "#/definitions/domain.ValidationErrorResponse"
+                }
+            }
+        },
+        "domain.ValidationErrorResponse": {
+            "type": "object",
+            "properties": {
+                "auth_error": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "fullname": {
+                    "type": "string"
+                },
+                "incorrect": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "user_error": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

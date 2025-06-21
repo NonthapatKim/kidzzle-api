@@ -1,0 +1,1366 @@
+basePath: /api/v1
+definitions:
+  domain.CreateAssessmentResultRequest:
+    properties:
+      accessToken:
+        type: string
+      assessment_question_id:
+        type: string
+      is_passed:
+        type: boolean
+      kid_id:
+        type: string
+    type: object
+  domain.CreateAssessmentResultResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.CreateKidDataRequest:
+    properties:
+      accessToken:
+        type: string
+      kid_birth_weight:
+        type: string
+      kid_birthday:
+        type: string
+      kid_blood_type:
+        type: string
+      kid_body_length:
+        type: string
+      kid_congenital_disease:
+        type: string
+      kid_gender:
+        type: string
+      kid_gestational_age:
+        type: string
+      kid_name:
+        type: string
+      kid_oxygen:
+        type: string
+      pregnant_id:
+        type: string
+      userId:
+        type: string
+    type: object
+  domain.CreateKidDataResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.CreateMotherPregnantRequest:
+    properties:
+      accessToken:
+        type: string
+      mother_birthday:
+        type: string
+      mother_name:
+        type: string
+      pregnant_complications:
+        type: string
+      pregnant_congenital_disease:
+        type: string
+      pregnant_drug_history:
+        type: string
+      userId:
+        type: string
+    type: object
+  domain.CreateMotherPregnantResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.DeleteKidDataByIdResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.DeleteMotherPregnantByIdResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.ErrorResponseExample400:
+    properties:
+      code:
+        example: 400
+        type: integer
+      message:
+        example: Bad Request
+        type: string
+    type: object
+  domain.ErrorResponseExample401:
+    properties:
+      code:
+        example: 401
+        type: integer
+      message:
+        example: Unauthorized
+        type: string
+    type: object
+  domain.ErrorResponseExample500:
+    properties:
+      code:
+        example: 500
+        type: integer
+      message:
+        example: Internal Server Error
+        type: string
+    type: object
+  domain.GetAssessmentAgeRangeResponse:
+    properties:
+      age_range:
+        example: 0-1
+        type: string
+      age_range_id:
+        example: AGER_1
+        type: string
+      assessment_type_id:
+        example: ASSMTT_1
+        type: string
+      max_months:
+        example: "1"
+        type: string
+      min_months:
+        example: "0"
+        type: string
+    type: object
+  domain.GetAssessmentQuestionResponse:
+    properties:
+      age_range_id:
+        example: AGER_4
+        type: string
+      age_range_name:
+        example: 3-4
+        type: string
+      assessment_method:
+        example: <p>1. จัดให้เด็กอยู่ในท่านอนคว่ำบนพื้นราบ&nbsp;</p><p>2. เขย่ากรุ๋งกริ๋งด้านหน้าเด็กเพื่อให้เด็กสนใจ
+          แล้วเคลื่อนขึ้นด้านบน กระตุ้นให้เด็กมองตาม</p>
+        type: string
+      assessment_no:
+        example: "1"
+        type: string
+      assessment_question_id:
+        example: 088e7d6b-faa8-11ef-870e-0242ac120002
+        type: string
+      assessment_required_tool:
+        example: กรุ๋งกริ๋ง
+        type: string
+      assessment_type_id:
+        example: ASSMTT_1
+        type: string
+      assessment_type_name:
+        example: DAIM
+        type: string
+      dev_type_id:
+        example: DEVT_1
+        type: string
+      development_type:
+        example: GM
+        type: string
+      pass_criteria:
+        example: เด็กยกศีรษะและอกโดยใช้แขนยันกับพื้นพยุงตัวไว้อย่างน้อย 5 วินาที
+        type: string
+      question_text:
+        example: ท่านอนคว่ำยกศีรษะและอกพ้นพื้น (GM)
+        type: string
+    type: object
+  domain.GetAssessmentResultByIdResponse:
+    properties:
+      assessment_question_id:
+        example: 3afe2697-2b02-46d4-a9c3-efd0bdd9e014
+        type: string
+      assessment_result_id:
+        example: 8457529e-01fb-41d0-82b1-9618be667862
+        type: string
+      created_at:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+      is_passed:
+        example: true
+        type: boolean
+      kid_id:
+        example: 7d7bc87f-0faf-43f9-9af9-1a09166db993
+        type: string
+    type: object
+  domain.GetAssessmentResultDataByIdResponse:
+    properties:
+      age_range_id:
+        example: AGER_1
+        type: string
+      assessment_question_id:
+        example: 3afe2697-2b02-46d4-a9c3-efd0bdd9e014
+        type: string
+      assessment_result_id:
+        example: 7d7bc87f-0faf-43f9-9af9-1a09166db993
+        type: string
+      assessment_type_id:
+        example: ASSMTT_1
+        type: string
+      created_at:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+      is_passed:
+        example: true
+        type: boolean
+      kid_id:
+        example: 8457529e-01fb-41d0-82b1-9618be667862
+        type: string
+    type: object
+  domain.GetAssessmentTrainingMethodsResponse:
+    properties:
+      assessment_no:
+        example: "1"
+        type: string
+      assessment_question_id:
+        example: 088e7d6b-faa8-11ef-870e-0242ac120002
+        type: string
+      assessment_type_id:
+        example: ASSMTT_1
+        type: string
+      training_methods_id:
+        example: 088e7d6b-faa8-11ef-870e-0242ac120002
+        type: string
+      training_required_tools:
+        example: Training Required Tools
+        type: string
+      training_text:
+        example: Training Text
+        type: string
+    type: object
+  domain.GetKidDataResponse:
+    properties:
+      created_at:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+      kid_birth_weight:
+        example: TEST
+        type: string
+      kid_birthday:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+      kid_blood_type:
+        example: TEST
+        type: string
+      kid_body_length:
+        example: TEST
+        type: string
+      kid_congenital_disease:
+        example: TEST
+        type: string
+      kid_gender:
+        example: Male
+        type: string
+      kid_gestational_age:
+        example: TEST
+        type: string
+      kid_id:
+        example: 088e7d6b-faa8-11ef-870e-0242ac120002
+        type: string
+      kid_name:
+        example: Waruntorn Paonil
+        type: string
+      kid_oxygen:
+        example: TEST
+        type: string
+      mother_name:
+        example: TEST
+        type: string
+      pregnant_id:
+        example: 088e7d6b-faa8-11ef-870e-0242ac120002
+        type: string
+      updated_at:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+    type: object
+  domain.GetMotherPregnantByIdResponse:
+    properties:
+      created_at:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+      mother_birthday:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+      mother_name:
+        example: TEST
+        type: string
+      pregnant_complications:
+        example: TEST
+        type: string
+      pregnant_congenital_disease:
+        example: TEST
+        type: string
+      pregnant_drug_history:
+        example: TEST
+        type: string
+      pregnant_id:
+        example: 088e7d6b-faa8-11ef-870e-0242ac120002
+        type: string
+      updated_at:
+        example: "2025-03-09T00:00:00Z"
+        type: string
+    type: object
+  domain.GetPromotionBodyPartResponse:
+    properties:
+      body_id:
+        example: bd5f5f6f-fd05-11ef-870e-0242ac120002
+        type: string
+      body_image_url:
+        example: url_link
+        type: string
+      body_name:
+        example: สีเขียว (Green)
+        type: string
+      body_sound_file_url:
+        example: url_link
+        type: string
+    type: object
+  domain.GetPromotionColorResponse:
+    properties:
+      color_id:
+        example: bd5f5f6f-fd05-11ef-870e-0242ac120002
+        type: string
+      color_image_url:
+        example: url_link
+        type: string
+      color_name:
+        example: สีน้ำตาล (Brown)
+        type: string
+      color_shape:
+        example: สี่เหลี่ยมจัตุรัส (Square)
+        type: string
+      color_sound_file_url:
+        example: url_link
+        type: string
+    type: object
+  domain.UpdateKidDataByIdRequest:
+    properties:
+      accessToken:
+        type: string
+      kid_birth_weight:
+        type: string
+      kid_birthday:
+        type: string
+      kid_blood_type:
+        type: string
+      kid_body_length:
+        type: string
+      kid_congenital_disease:
+        type: string
+      kid_gender:
+        type: string
+      kid_gestational_age:
+        type: string
+      kid_name:
+        type: string
+      kid_oxygen:
+        type: string
+      kidId:
+        type: string
+      pregnant_id:
+        type: string
+      userId:
+        type: string
+    type: object
+  domain.UpdateKidDataByIdResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.UpdateMotherPregnantByIdRequest:
+    properties:
+      accessToken:
+        type: string
+      mother_birthday:
+        type: string
+      mother_name:
+        type: string
+      pregnant_complications:
+        type: string
+      pregnant_congenital_disease:
+        type: string
+      pregnant_drug_history:
+        type: string
+      pregnantId:
+        type: string
+    type: object
+  domain.UpdateMotherPregnantByIdResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.UserAuthenticateResponse:
+    properties:
+      user_id:
+        example: 302ba3d3-7c92-4777-a914-2aa7dee55e1e
+        type: string
+    type: object
+  domain.UserLoginBySocialRequest:
+    properties:
+      email:
+        type: string
+      method:
+        example: google
+        type: string
+      token:
+        type: string
+    type: object
+  domain.UserLoginBySocialResponse:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiI...
+        type: string
+      code:
+        example: 200
+        type: integer
+      message:
+        example: successfully login
+        type: string
+    type: object
+  domain.UserLoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 8
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  domain.UserLoginResponse:
+    properties:
+      access_token:
+        example: eyJhbGciOiJIUzI1NiI...
+        type: string
+      code:
+        example: 200
+        type: integer
+      message:
+        example: successfully login
+        type: string
+    type: object
+  domain.UserRegisterRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 8
+        type: string
+      userId:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  domain.UserRegisterResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: success
+        type: string
+    type: object
+  domain.UserRequestResetPasswordRequest:
+    properties:
+      email:
+        type: string
+      token:
+        type: string
+    required:
+    - email
+    type: object
+  domain.UserRequestResetPasswordResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      token:
+        type: string
+    type: object
+  domain.UserResetPasswordRequest:
+    properties:
+      password:
+        type: string
+      token:
+        type: string
+    required:
+    - password
+    - token
+    type: object
+  domain.UserResetPasswordResponse:
+    properties:
+      code:
+        example: 200
+        type: integer
+      message:
+        example: successfully reset password
+        type: string
+    type: object
+  domain.ValidationError:
+    properties:
+      errors:
+        $ref: '#/definitions/domain.ValidationErrorResponse'
+    type: object
+  domain.ValidationErrorResponse:
+    properties:
+      auth_error:
+        type: string
+      email:
+        type: string
+      fullname:
+        type: string
+      incorrect:
+        type: string
+      password:
+        type: string
+      user_error:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is the API documentation for the kidzzle project.
+  title: kidzzle API
+  version: "1.0"
+paths:
+  /assessments/{assessmentType}/age-range/:
+    get:
+      consumes:
+      - application/json
+      description: Get the age range for a given assessment type
+      parameters:
+      - description: Assessment Type ID
+        in: path
+        name: assessmentType
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Age range retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetAssessmentAgeRangeResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Get assessment age range
+      tags:
+      - Assessment
+  /assessments/{assessmentType}/question/:
+    get:
+      consumes:
+      - application/json
+      description: Get assessment question by assessment type
+      parameters:
+      - description: Assessment Type
+        in: path
+        name: assessmentType
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Assessment question retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetAssessmentQuestionResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Get assessment question
+      tags:
+      - Assessment
+  /assessments/{assessmentType}/training:
+    get:
+      consumes:
+      - application/json
+      description: Get training methods for a given assessment type
+      parameters:
+      - description: Assessment Type ID
+        in: path
+        name: assessmentType
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Training methods retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetAssessmentTrainingMethodsResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Get assessment training methods
+      tags:
+      - Assessment
+  /assessments/{kidId}/{ageRageId}/{assessmentTypeId}/result:
+    get:
+      consumes:
+      - application/json
+      description: Get assessment result data for a given kid, age range, and assessment
+        type
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Kid ID
+        in: path
+        name: kidId
+        required: true
+        type: string
+      - description: Age Range ID
+        in: path
+        name: ageRageId
+        required: true
+        type: string
+      - description: Assessment Type ID
+        in: path
+        name: assessmentTypeId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Assessment result data retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetAssessmentResultDataByIdResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Get assessment result data by ID
+      tags:
+      - Assessment
+  /assessments/{kidId}/{assessmentQuestionId}/result:
+    get:
+      consumes:
+      - application/json
+      description: Get an assessment result for a given kid and assessment question
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Kid ID
+        in: path
+        name: kidId
+        required: true
+        type: string
+      - description: Assessment Question ID
+        in: path
+        name: assessmentQuestionId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Assessment result retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetAssessmentResultByIdResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Get an assessment result by ID
+      tags:
+      - Assessment
+  /assessments/result:
+    post:
+      consumes:
+      - application/json
+      description: Create a new assessment result for a given kid and assessment question
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Assessment Result Request
+        in: body
+        name: assessment
+        required: true
+        schema:
+          $ref: '#/definitions/domain.CreateAssessmentResultRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Assessment result created successfully
+          schema:
+            $ref: '#/definitions/domain.CreateAssessmentResultResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Create a new assessment result
+      tags:
+      - Assessment
+  /kids/:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve kid data using the provided access token
+      parameters:
+      - description: Pregnant ID
+        in: path
+        name: PregnantId
+        required: true
+        type: string
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Kid data retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetKidDataResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Get kid data by ID
+      tags:
+      - Kid
+  /kids/{kidId}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete kid data by given kid ID
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Kid ID
+        in: path
+        name: kidId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Kid data deleted successfully
+          schema:
+            $ref: '#/definitions/domain.DeleteKidDataByIdResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Delete kid data by ID
+      tags:
+      - Kid
+    put:
+      consumes:
+      - application/json
+      description: Update the data of a kid by their ID
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Kid ID
+        in: path
+        name: kidId
+        required: true
+        type: string
+      - description: Kid Data Update Request
+        in: body
+        name: kidData
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UpdateKidDataByIdRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Kid data updated successfully
+          schema:
+            $ref: '#/definitions/domain.UpdateKidDataByIdResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Update kid data by ID
+      tags:
+      - Kid
+  /kids/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new kid data with the provided information
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Kid Data Request
+        in: body
+        name: kidData
+        required: true
+        schema:
+          $ref: '#/definitions/domain.CreateKidDataRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Kid data created successfully
+          schema:
+            $ref: '#/definitions/domain.CreateKidDataResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Create a new kid data
+      tags:
+      - Kid
+  /mother-pregnant/{pregnantId}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a mother pregnant record by its ID
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Pregnant ID
+        in: path
+        name: pregnantId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Mother pregnant record deleted successfully
+          schema:
+            $ref: '#/definitions/domain.DeleteMotherPregnantByIdResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Delete a mother pregnant record by ID
+      tags:
+      - MotherPregnant
+  /mother-pregnants/:
+    get:
+      consumes:
+      - application/json
+      description: Get mother pregnant information by ID
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Mother ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Mother pregnant information retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetMotherPregnantByIdResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Get mother pregnant by ID
+      tags:
+      - MotherPregnant
+  /mother-pregnants/{pregnantId}:
+    put:
+      consumes:
+      - application/json
+      description: Update the information of a mother pregnant by the given ID
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Pregnant ID
+        in: path
+        name: pregnantId
+        required: true
+        type: string
+      - description: Mother Pregnant Update Request
+        in: body
+        name: motherPregnant
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UpdateMotherPregnantByIdRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Mother pregnant information updated successfully
+          schema:
+            $ref: '#/definitions/domain.UpdateMotherPregnantByIdResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Update mother pregnant information by ID
+      tags:
+      - MotherPregnant
+  /mother-pregnants/create:
+    post:
+      consumes:
+      - application/json
+      description: Create a new mother pregnant record with the given details
+      parameters:
+      - description: Access Token
+        in: header
+        name: accessToken
+        required: true
+        type: string
+      - description: Mother Pregnant Request
+        in: body
+        name: motherPregnant
+        required: true
+        schema:
+          $ref: '#/definitions/domain.CreateMotherPregnantRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Mother pregnant record created successfully
+          schema:
+            $ref: '#/definitions/domain.CreateMotherPregnantResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      security:
+      - BearerAuth: []
+      summary: Create a new mother pregnant record
+      tags:
+      - MotherPregnant
+  /promotions/body-part:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the promotion body part details
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Promotion body part retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetPromotionBodyPartResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Get promotion body part
+      tags:
+      - Promotion
+  /promotions/color:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve the promotion color
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Promotion color retrieved successfully
+          schema:
+            $ref: '#/definitions/domain.GetPromotionColorResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Get promotion color
+      tags:
+      - Promotion
+  /user/authenticate:
+    get:
+      consumes:
+      - application/json
+      description: Authenticates the user based on the provided user token
+      parameters:
+      - default: Bearer <token>
+        description: Access token
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.UserAuthenticateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample400'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Authenticate user from token
+      tags:
+      - User
+  /user/login/social:
+    post:
+      consumes:
+      - application/json
+      description: Authenticates a user with provided credentials by Social Login
+        (Third Party)
+      parameters:
+      - description: User login details
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UserLoginBySocialRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.UserLoginBySocialResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample400'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: User login By Social Login (Third Party)
+      tags:
+      - User
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Authenticate user with email and password
+      parameters:
+      - description: User Login Request
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UserLoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User logged in successfully
+          schema:
+            $ref: '#/definitions/domain.UserLoginResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: User login
+      tags:
+      - User
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      description: Register a new user with email and password
+      parameters:
+      - description: User Register Request
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UserRegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User registered successfully
+          schema:
+            $ref: '#/definitions/domain.UserRegisterResponse'
+        "400":
+          description: Validation error
+          schema:
+            $ref: '#/definitions/domain.ValidationError'
+        "401":
+          description: Unauthorized error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal server error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Register a new user
+      tags:
+      - User
+  /users/request-reset-password:
+    post:
+      consumes:
+      - application/json
+      description: Sends a password reset request to the specified email
+      parameters:
+      - description: Email for password reset
+        in: body
+        name: userRequestResetPwd
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UserRequestResetPasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.UserRequestResetPasswordResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Request password reset
+      tags:
+      - User
+  /users/reset-password:
+    put:
+      consumes:
+      - application/json
+      description: Reset the password for the user using a reset password token
+      parameters:
+      - description: User reset password request
+        in: body
+        name: userResetPwd
+        required: true
+        schema:
+          $ref: '#/definitions/domain.UserResetPasswordRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.UserResetPasswordResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample401'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/domain.ErrorResponseExample500'
+      summary: Reset user password
+      tags:
+      - User
+schemes:
+- http
+swagger: "2.0"

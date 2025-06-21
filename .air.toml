@@ -1,0 +1,10 @@
+# .air.toml
+
+[build]
+  cmd = "go build -o ./bin/server ./cmd/server"
+  bin = "./bin/server"
+  include = ["cmd/server", "pkg", "internal"]
+  exclude = ["tmp", "vendor"]
+
+[log]
+  time = true

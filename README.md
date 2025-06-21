@@ -1,5 +1,5 @@
-# tomos-api
-This is tomos Application Program Interface (API) Version 2
+# Kidzzle-api
+This is Kiddzzle Application Program Interface (API)
 
 ```
 docker compose up -d

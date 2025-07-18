@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: dev.Dockerfile
     ports:
-      - "8080:8080"
+      - "2300:2300"
     environment:
-      - PORT=8080
+      - PORT=2300
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}
       - DB_NAME=${DB_NAME}

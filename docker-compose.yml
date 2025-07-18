@@ -16,14 +16,12 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - SECRET_KEY=${SECRET_KEY}
       - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS}
-      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
       - LINE_CLIENT_ID=${LINE_CLIENT_ID}
       - TZ=Asia/Bangkok
     networks:
       - my_network
     volumes:
       - .:/app
-      - ./serviceAccountKey.json:/app/serviceAccountKey.json
 
 networks:
   my_network:

@@ -1,8 +1,8 @@
 module github.com/NonthapatKim/kidzzle-api
 
-go 1.23.0
+go 1.24.0
 
-toolchain go1.23.8
+toolchain go1.24.5
 
 require (
 	github.com/arsmn/fiber-swagger/v2 v2.31.1

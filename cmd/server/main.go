@@ -8,11 +8,19 @@ package main
 
 import (
 	"log"
+	"os"
 
 	"github.com/NonthapatKim/kidzzle-api/internal/server"
+	"github.com/joho/godotenv"
 )
 
 func main() {
+	if os.Getenv("ENV") != "production" {
+		if err := godotenv.Load(); err != nil {
+			log.Println("Warning: .env file not loaded")
+		}
+	}
+
 	if err := server.RunServer(); err != nil {
 		log.Fatal(err)
 	}
